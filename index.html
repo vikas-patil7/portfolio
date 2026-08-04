@@ -270,7 +270,7 @@ img{
     font-family:var(--mono);
     font-size:clamp(15px, 2vw, 18px);
     color:var(--muted);
-    margin-top:20px;
+    margin-top:16px;
     min-height:28px;
   }
   .cursor{
@@ -316,7 +316,9 @@ img{
     perspective:1200px;
     display:flex;
     justify-content:center;
-  }
+    align-items:center;
+    margin-bottom:20px;
+}
   .photo-card{
     position: relative;
     width: 100%;
@@ -780,8 +782,8 @@ min-width:220px;
     }
 
     .hero h1{
-        font-size:clamp(2.3rem,8vw,3.2rem);
-        line-height:1.15;
+        font-size:clamp(2rem,7vw,2.8rem);
+        line-height:1.2;
         text-align:center;
         word-break:normal;
         overflow-wrap:normal;
@@ -800,9 +802,13 @@ min-width:220px;
     .hero-cta .btn{
         width:100%;
     }
+    .photo-wrap{
+    order:-1;
+    margin-bottom:24px;
+}
 
     .photo-card{
-        max-width:230px;
+        max-width:210px;
         margin:0 auto;
     }
 }
