@@ -216,9 +216,10 @@
     display:grid;
     grid-template-columns:1.15fr 0.85fr;
     gap:48px;
-    align-items:center;
+    align-items:start;
   }
   .hero-copy{min-width:0;}
+  .photo-wrap{margin-top:12px;min-width:0;}
   .hero-eyebrow{
     font-family:var(--mono);
     font-size:13px;
@@ -292,7 +293,8 @@
   }
   .photo-card{
     position:relative;
-    width:min(280px, 78vw);
+    width:min(280px, 100%);
+    max-width:100%;
     aspect-ratio:3/3.6;
     border-radius:16px;
     background:var(--panel);
@@ -363,8 +365,8 @@
 
   .photo-badge{
     position:absolute;
-    top:-14px;right:-14px;
-    transform:translateZ(56px) rotate(-6deg);
+    top:12px;right:12px;
+    transform:translateZ(40px) rotate(-2deg);
     background:var(--panel);
     border:1px solid var(--line-strong);
     border-radius:9px;
@@ -373,6 +375,8 @@
     font-size:11px;
     color:var(--text);
     box-shadow:0 12px 24px -10px rgba(0,0,0,0.5);
+    white-space:nowrap;
+    max-width:calc(100% - 24px);
   }
   .photo-badge .n{color:var(--orange);}
 
