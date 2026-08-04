@@ -24,7 +24,24 @@
     --pink: #ff7ab6;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --sans: 'Inter', -apple-system, sans-serif;
-  }
+}
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
 
   body.light{
     --bg: #f6f7f9;
@@ -213,16 +230,15 @@
 
   /* ---------- Hero ---------- */
   .hero{padding-top:64px;}
-  .hero-grid{
+.hero-grid{
     display:grid;
-    grid-template-columns:1.4fr 380px;
-    gap:60px;
+    grid-template-columns:minmax(0,1fr) 360px;
+    gap:48px;
     align-items:center;
 }
-  .hero-copy{
-    min-width:0;
+ .hero-copy{
     width:100%;
-    max-width:100%;
+    max-width:760px;
 }
   .photo-wrap{margin-top:12px;min-width:0;}
   .hero-eyebrow{
@@ -234,11 +250,17 @@
   .hero-eyebrow .kw{color:var(--purple);}
   .hero-eyebrow .str{color:var(--orange);}
 
- .hero h1{
-    font-size:clamp(3rem,5vw,5rem);
-    line-height:1.05;
-    word-break:normal;
-    overflow-wrap:normal;
+.hero h1{
+    font-size: clamp(2.8rem,4.5vw,4.6rem);
+    line-height: 1.05;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    margin: 0;
+}
+.hero h1 .param{
+    color: var(--orange);
+    white-space: nowrap;
 }
   .hero h1 .fn{color:var(--blue);}
   .hero h1 .punc{color:var(--dim);}
@@ -261,7 +283,8 @@
   @keyframes blink{50%{opacity:0;}}
 
   .hero-desc{
-    max-width:100%;
+    max-width:650px;
+    line-height:1.8;
     margin-top:26px;
     color:var(--muted);
     font-size:15.5px;
@@ -271,17 +294,6 @@
     margin-top:34px;
     display:flex;gap:12px;flex-wrap:wrap;
   }
-  @media (min-width:1024px){
-
-.hero-grid{
-    grid-template-columns:minmax(0,1fr) 360px;
-}
-
-.photo-card{
-    max-width:320px;
-}
-
-}
   .btn{
     font-family:var(--mono);
     font-size:13px;
@@ -407,7 +419,7 @@
 
     .hero-grid{
         grid-template-columns:1fr;
-        gap:40px;
+        gap:64px;
         text-align:center;
     }
 
@@ -420,6 +432,7 @@
     }
 
     .hero-cta{
+      gap:16px;
         justify-content:center;
     }
 
@@ -662,50 +675,212 @@ min-width:220px;
     .titlebar-path span:not(.active-file){display:none;}
   }
   /* ---------- Responsive Photo Card ---------- */
+@media (min-width:1440px){
 
+    main{
+        max-width:1600px;
+        margin-left:230px;
+        padding:0 80px 120px;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr 420px;
+        gap:72px;
+    }
+
+    .photo-card{
+        max-width:380px;
+    }
+
+}
 @media (min-width:1024px){
     .photo-card{
         max-width:340px;
     }
 }
 
+/* ===========================
+   Tablet (1023px and below)
+=========================== */
+
 @media (max-width:1023px){
+
+    main{
+        margin-left:0;
+        padding:0 22px 80px;
+    }
+
+    .sidebar{
+        transform:translateX(-100%);
+        transition:transform .25s ease;
+        z-index:110;
+        width:250px;
+        box-shadow:2px 0 24px rgba(0,0,0,.35);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .sidebar-overlay.open{
+        display:block;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+        text-align:center;
+    }
+
+    .hero-copy{
+        width:100%;
+        max-width:100%;
+        margin:0 auto;
+    }
+
+    .hero-desc{
+        max-width:100%;
+        margin:0 auto;
+    }
+
+    .hero-cta{
+        justify-content:center;
+    }
+
+    .photo-wrap{
+        order:-1;
+    }
+
     .photo-card{
         max-width:280px;
+        margin:0 auto;
     }
 }
 
+/* ===========================
+   Mobile (768px and below)
+=========================== */
+
+.mobile-break{
+    display:none;
+}
+
 @media (max-width:768px){
+
+    .mobile-break{
+        display:block;
+    }
+
+    .hero{
+        padding-top:24px;
+    }
+
+    .hero-grid{
+        gap:24px;
+    }
+
+    .hero h1{
+        font-size:clamp(2.3rem,8vw,3.2rem);
+        line-height:1.15;
+        text-align:center;
+        word-break:normal;
+        overflow-wrap:normal;
+    }
+
+    .hero-desc{
+        max-width:90%;
+        margin:0 auto;
+    }
+
+    .hero-cta{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .hero-cta .btn{
+        width:100%;
+    }
+
     .photo-card{
         max-width:230px;
+        margin:0 auto;
+    }
+}
+
+/* ===========================
+   Small Mobile
+=========================== */
+
+@media (max-width:560px){
+
+    main{
+        padding:0 16px 70px;
+    }
+
+    .hero{
+        padding-top:44px;
+    }
+
+    .hero-cta{
+        align-items:stretch;
+    }
+
+    .hero-cta .btn{
+        justify-content:center;
+    }
+
+    .about-grid{
+        gap:26px;
+    }
+
+    .contact-links{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .contact-panel{
+        padding:26px 20px;
+    }
+
+    .titlebar-path span:not(.active-file){
+        display:none;
     }
 }
 
 @media (max-width:480px){
+
     .photo-card{
         max-width:190px;
     }
 }
+
+/* ===========================
+   Desktop
+=========================== */
+
 @media (min-width:1024px){
 
-.menu-toggle{
-display:none !important;
-}
+    .menu-toggle{
+        display:none !important;
+    }
 
-.sidebar{
-transform:none !important;
-left:0;
-}
+    .sidebar{
+        transform:none !important;
+        left:0;
+    }
 
-.sidebar-overlay{
-display:none !important;
-}
+    .sidebar-overlay{
+        display:none !important;
+    }
 
-main{
-margin-left:230px;
-width:calc(100% - 230px);
-}
+    main{
+        margin-left:230px;
+        width:calc(100% - 230px);
+    }
 
+    .photo-card{
+        max-width:340px;
+    }
 }
 </style>
 </head>
@@ -761,7 +936,11 @@ width:calc(100% - 230px);
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="hero-eyebrow"><span class="kw">const</span> location = <span class="str">"Bangalore, India"</span>; <span class="kw">const</span> status = <span class="str">"open to work"</span>;</div>
-          <h1><span class="fn">Vikas</span><span class="punc">.</span><span class="fn">Patil</span><span class="punc">(</span><span class="param">"Software Engineer"</span><span class="punc">)</span></h1>
+          <h1>
+    <span class="fn">Vikas</span><span class="punc">.M.</span><span class="fn">Patil</span>
+    <br class="mobile-break">
+    <span class="punc"></span><span class="param">"Software Engineer"</span><span class="punc"></span>
+</h1>
           <div class="typed-line" id="typedLine"><span class="cursor"></span></div>
           <p class="hero-desc">
             Software Engineer specializing in responsive web development with experience delivering freelance client projects. Proficient in Core Java, JavaScript, React.js, SQL, HTML, CSS, and REST APIs, committed to building scalable, high-performance, and user-friendly web applications.
